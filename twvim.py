@@ -26,7 +26,7 @@ def Timeline(broad):
             print "There was an error fetching your twitter's friends timeline"
             return
 
-        binfo = {'title':'# Your friends Twitter timeline','name':'TwitterFriendsTimeline'}
+        binfo = {'title':'# Your friends Twitter timeline','name':'TwvimFTimeline'}
     else:
         try:
             jsondata = urllib2.urlopen('http://twitter.com/statuses/public_timeline.json').read()
@@ -34,7 +34,7 @@ def Timeline(broad):
             print "There was an error fetching twitter public timeline"
             return
 
-        binfo = {'title':'# Twitter public timeline', 'name': 'TwitterPublicTimeline'}
+        binfo = {'title':'# Twitter public timeline', 'name': 'TwvimPTimeline'}
 
     winnr = int(vim.eval("bufwinnr('" + binfo['name'] +"')"))
     if (winnr == -1):
@@ -57,7 +57,7 @@ def Update(status):
 
     opts = urllib.urlencode({
         "status" : status,
-        "source" : "vimscript1853"})
+        "source" : "twvim"})
 
     try:
         req.open("http://twitter.com/statuses/update.json", opts).read()
